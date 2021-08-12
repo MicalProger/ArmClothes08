@@ -33,9 +33,13 @@ namespace ArmClothesDesktop.Pages
                 currentPage = res - 1;
             }
         }
+
+
+
         public MaterialsPage()
         {
             InitializeComponent();
+
             currentMaterials = Utils.DB.Material.ToList();
             CountTB.Text = $"{currentMaterials.Count} из {Utils.DB.Material.ToList().Count}";
             foreach (var item in currentMaterials)
@@ -45,19 +49,7 @@ namespace ArmClothesDesktop.Pages
                     item.Image = new Entities.Image() { Data = File.ReadAllBytes(@"Resouces\picture.png") };
                 }
             }
-            var materilas = currentMaterials;
-            for (int i = 0; i < materilas.Count / 15; i++)
-            {
-                Button tmpButton = new Button()
-                {
-                    Content = i + 1,
-                    Width = 20,
-                    DataContext = materilas.Skip(i * 15).Take(15).ToList()
-                };
-                tmpButton.Click += OnSetPage;
-                PageByttonsSP.Children.Add(tmpButton);
-            }
-            MaterialsLW.ItemsSource = currentMaterials.Take(15).ToList();
+            UpdateMaterials();
         }
 
         private void LastPage(object sender, RoutedEventArgs e)
@@ -77,7 +69,7 @@ namespace ArmClothesDesktop.Pages
 
         private void AddMaterial(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MaterialPage());
+            NavigationService.Navigate(new MaterialPage(new Material()));
         }
 
         private void OnSort(object sender, SelectionChangedEventArgs e)
@@ -121,17 +113,21 @@ namespace ArmClothesDesktop.Pages
             MaterialsLW.ItemsSource = null;
             MaterialsLW.ItemsSource = currentMaterials.Skip(currentPage * 15).Take(15).ToList();
             OnSort(null, null);
-            SearchTB_TextChanged(null, null);
+            if (sender != null)
+                SearchTB_TextChanged(null, null);
             UpdateMaterials();
         }
 
         private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(SearchTB.Text))
-                return;
+            {
+                currentMaterials = Utils.DB.Material.ToList();
+                OnFilter(null, null);
+                OnSort(null, null);
+            }
             else
                 currentMaterials = currentMaterials.Where(i => i.Name.ToLower().Contains(SearchTB.Text.ToLower())).ToList();
-            OnFilter(null, null);
             UpdateMaterials();
         }
 
@@ -152,6 +148,20 @@ namespace ArmClothesDesktop.Pages
             }
             MaterialsLW.ItemsSource = null;
             MaterialsLW.ItemsSource = currentMaterials.Take(15).ToList();
+        }
+
+        private void EditMaterial(object sender, SelectionChangedEventArgs e)
+        {
+            if (MaterialsLW.SelectedItem == null)
+                return;
+            NavigationService.Navigate(new MaterialPage(MaterialsLW.SelectedItem as Material));
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Utils.DB = new ArmClothesEntities();
+            currentMaterials = Utils.DB.Material.ToList();
+            UpdateMaterials();
         }
     }
 }

@@ -22,13 +22,13 @@ namespace ArmClothesDesktop.Entities
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> TypeId { get; set; }
+        public int TypeId { get; set; }
         public Nullable<int> ImageId { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> CurrentCount { get; set; }
         public Nullable<int> MinimalCount { get; set; }
         public Nullable<int> PocketCount { get; set; }
-        public Nullable<int> UnitId { get; set; }
+        public int UnitId { get; set; }
     
         public virtual Image Image { get; set; }
         public virtual MaterialType MaterialType { get; set; }

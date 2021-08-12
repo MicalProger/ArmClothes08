@@ -9,6 +9,54 @@
       Title="MaterialPage">
 
     <Grid>
-        
+        <ScrollViewer>
+            <StackPanel>
+                <Button Margin="5" HorizontalAlignment="Left" Click="OnGoBack">Вернуться назад</Button>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Название</TextBlock>
+                <TextBox MaxLength="49" Margin="5" Text="{Binding Name}"/>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Тип материала</TextBlock>
+                <ComboBox Margin="5" SelectedIndex="{Binding TypeId}">
+                    <ComboBoxItem>Тип материала</ComboBoxItem>
+                    <ComboBoxItem>Резина</ComboBoxItem>
+                    <ComboBoxItem>Краста</ComboBoxItem>
+                    <ComboBoxItem>Силикон</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Количество на складе</TextBlock>
+                <TextBox Margin="5" Text="{Binding CurrentCount}"/>
+                <ComboBox Margin="5" SelectedIndex="{Binding UnitId}">
+                    <ComboBoxItem>Еденица измерения</ComboBoxItem>
+                    <ComboBoxItem>Метры</ComboBoxItem>
+                    <ComboBoxItem>Литры</ComboBoxItem>
+                    <ComboBoxItem>Килограммы</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Количество в упаковке</TextBlock>
+                <TextBox Margin="5" Text="{Binding MinimalCount}"/>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Минимальное количество</TextBlock>
+                <TextBox Margin="5" Text="{Binding MinimalCount}"/>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Стоимость за еденицу</TextBlock>
+                <TextBox Margin="5" Text="{Binding Price}"/>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Изображние</TextBlock>
+                <Button Click="ChooseImage" HorizontalAlignment="Left" Margin="5">Выбрать изображение</Button>
+                <Image Margin="5" Source="{Binding Image.Data}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                <TextBlock Margin="5" HorizontalAlignment="Left">Описание</TextBlock>
+                <TextBox Margin="5" Text="{Binding Description}" TextWrapping="Wrap"/>
+                <TextBlock  Margin="5">Поставщики</TextBlock>
+                <Grid Height="110" Width="300" HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox Margin="5" Name="SupliersLB"/>
+                    <StackPanel Grid.Column="1">
+                        <ComboBox Margin="5" Name="SupliersGiver"/>
+                        <Button HorizontalAlignment="Left" Margin="5, 5, 2.5, 5" Width="20" Click="AddSupplier">+</Button>
+                        <Button HorizontalAlignment="Left" Margin="5, 2.5, 5, 5" Width="20" Click="RemoveSupplier">-</Button>
+                    </StackPanel>
+                </Grid>
+                <Button Margin="5" FontSize="25" Click="OnSaveMaterial">Сохранить</Button>
+                <Button Margin="5" FontSize="25" Click="OnRemoveMaterial">Удалить</Button>
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\Partials\Supplier.cs" />
     <Compile Include="Pages\MaterialPage.xaml.cs">
       <DependentUpon>MaterialPage.xaml</DependentUpon>
     </Compile>

@@ -9,6 +9,8 @@ namespace ArmClothesDesktop.Entities
 {
     partial class Material
     {
+        public string Suppliers => $"Поставщики: {string.Join(", ", MaterialSupplier.Select(i => i.Supplier.Name))}";
+        public string NameAndType => $"{this.MaterialType.Name} | {Name}";
         public SolidColorBrush CountColor
         {
             get

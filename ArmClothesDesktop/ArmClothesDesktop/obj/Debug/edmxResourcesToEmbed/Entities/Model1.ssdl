@@ -13,13 +13,13 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
-    <Property Name="TypeId" Type="int" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
     <Property Name="ImageId" Type="int" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
     <Property Name="CurrentCount" Type="int" />
     <Property Name="MinimalCount" Type="int" />
     <Property Name="PocketCount" Type="int" />
-    <Property Name="UnitId" Type="int" />
+    <Property Name="UnitId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MaterialSupplier">
     <Key>
@@ -84,7 +84,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Material_MaterialType">
-    <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="0..1" />
+    <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="1" />
     <End Role="Material" Type="Self.Material" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MaterialType">
@@ -96,7 +96,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Material_Unit">
-    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
     <End Role="Material" Type="Self.Material" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Unit">

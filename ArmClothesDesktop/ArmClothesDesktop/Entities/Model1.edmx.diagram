@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bd5e1c7e855445cfae7ef2a201cdfd04" Name="Diagram1">
-        <EntityTypeShape EntityType="ArmClothesModel.Image" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.Material" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.MaterialSupplier" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.MaterialType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.SuplierType" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.Supplier" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArmClothesModel.Unit" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <AssociationConnector Association="ArmClothesModel.FK_Material_Image" ManuallyRouted="false" />
-        <AssociationConnector Association="ArmClothesModel.FK_Material_MaterialType" ManuallyRouted="false" />
-        <AssociationConnector Association="ArmClothesModel.FK_Material_Unit" ManuallyRouted="false" />
-        <AssociationConnector Association="ArmClothesModel.FK_MaterialSupplier_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="ArmClothesModel.FK_MaterialSupplier_Supplier" ManuallyRouted="false" />
-        <AssociationConnector Association="ArmClothesModel.FK_Supplier_SuplierType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ArmClothesModel.Image" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="ArmClothesModel.Material" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="ArmClothesModel.MaterialSupplier" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="ArmClothesModel.MaterialType" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ArmClothesModel.SuplierType" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="ArmClothesModel.Supplier" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="ArmClothesModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ArmClothesModel.Unit" Width="1.5" PointX="0.75" PointY="2" />
+        <AssociationConnector Association="ArmClothesModel.FK_Material_Image" />
+        <AssociationConnector Association="ArmClothesModel.FK_Material_MaterialType" />
+        <AssociationConnector Association="ArmClothesModel.FK_Material_Unit" />
+        <AssociationConnector Association="ArmClothesModel.FK_MaterialSupplier_Material" />
+        <AssociationConnector Association="ArmClothesModel.FK_MaterialSupplier_Supplier" />
+        <AssociationConnector Association="ArmClothesModel.FK_Supplier_SuplierType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

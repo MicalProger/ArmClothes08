@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ArmClothesDesktop.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MaterialsPage">
+      Title="MaterialsPage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel>
                 <TextBlock Margin="5">Поиск</TextBlock>
-                <TextBox Name="SearchTB" TextChanged="SearchTB_TextChanged" Height="30" Margin="5, 2"/>
+                <TextBox Name="SearchTB" TextChanged="SearchTB_TextChanged" VerticalContentAlignment="Center" Height="30" Margin="5, 2"/>
             </StackPanel>
             <ComboBox Name="SortCB" SelectionChanged="OnSort" Margin="5" SelectedIndex="0" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                 <ComboBoxItem>Сортировка</ComboBoxItem>
@@ -45,14 +45,17 @@
                 <ComboBoxItem>Силикон</ComboBoxItem>
             </ComboBox>
         </Grid>
-        <ListView Grid.Row="1" Grid.Column="1" Margin="5" Name="MaterialsLW" HorizontalContentAlignment="Stretch">
+        <ListView Grid.Row="1" Grid.Column="1" Margin="5" Name="MaterialsLW" HorizontalContentAlignment="Stretch" SelectionChanged="EditMaterial">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Background="{Binding CountColor}" HorizontalAlignment="Stretch">
-                        <Image Source="{Binding Image.Data}" Width="50" Height="50" DockPanel.Dock="Left"/>
+                        <TextBlock Margin="5" Text="{Binding CurrentCount, StringFormat={} Остаток {0}}" DockPanel.Dock="Right"/>
+                        <Image Source="{Binding Image.Data}" Width="70" Height="70" DockPanel.Dock="Left"/>
                         <StackPanel DockPanel.Dock="Right">
-                            <TextBlock Margin="5" Text="{Binding Name}"/>
-                            <TextBlock Margin="5" Text="{Binding CurrentCount, StringFormat={} На складе {0}}"/>
+                            <TextBlock Margin="5, 2.5" Text="{Binding NameAndType}"/>
+                            <TextBlock Margin="5, 2.5" Text="{Binding MinimalCount, StringFormat={} Минимальное количество : {0} шт.}"/>
+                            <TextBlock Margin="5, 2.5" Text="{Binding NameAndType}"/>
+                            <TextBlock Margin="5, 2.5" Text="{Binding Suppliers}" TextWrapping="Wrap"/>
                         </StackPanel>
 
                     </DockPanel>
